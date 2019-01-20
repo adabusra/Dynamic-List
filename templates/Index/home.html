@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title> Demo</title>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<meta content="" name="description"/>
+<meta content="" name="author"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.5.1/css/buttons.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"  />
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/components-md.css" id="style_components" rel="stylesheet" type="text/css"/>
+<link href="../../assets/global/css/plugins-md.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout/css/layout.css" rel="stylesheet" type="text/css"/>
+<link id="style_color" href="../../assets/admin/layout/css/themes/darkblue.css" rel="stylesheet" type="text/css"/>
+<link href="../../assets/admin/layout/css/custom.css" rel="stylesheet" type="text/css"/>
+<style type="text/css">
+	.dt-button{
+		font-size: 12px;
+	    font-weight: 600;
+	    text-transform: uppercase;
+	    transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+	    -webkit-border-radius: 2px;
+	    -moz-border-radius: 2px;
+	    -ms-border-radius: 2px;
+	    -o-border-radius: 2px;
+	    border-radius: 2px;
+	    border-width: 0 !important;
+	    overflow: hidden;
+	    position: relative;
+	    padding: 9px 14px 8px 14px;
+	    color: #666666;
+	    background-color: #E6E6E6;
+	    border-color: #ccc;
+	}
+	.dataTables_filter label {
+    	line-height: 0;
+	}
+	.dataTables_filter{
+		float: right;
+    	margin-top: 50px;
+	}
+	.dt-buttons{
+		float: right;
+	}
+</style>
+
+</head>
+<body class="page-md page-header-fixed page-quick-sidebar-over-content ">
+
+<div class="clearfix">
+</div>
+<div class="page-container " style="background-color: white">
+	
+	<div class="page-content-wrapper" style="margin-left: -250px; width: 118%;">
+		<div class="page-content">
+			<div class="modal fade" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			      <!-- Modal content-->
+			      <div class="modal-content">
+			        <div class="modal-header">
+			          <h4 class="modal-title"></h4>
+			        </div>
+			        <div class="modal-body">
+			         
+			        </div>
+			        <div class="modal-footer">
+			        	<button onclick="modalKapat()" type="button" class="btn red">Kapat</button>
+			        </div>
+			      </div>			      
+			    </div>
+			</div>
+
+			<div class="row">			
+			<div class="col-md-12">
+				<div class="portlet box blue">
+					<div class="portlet-title">
+						<div class="caption">
+							<i class="fa fa-globe"></i>SELİMPAŞA ATIKSU ARITMA TESİSİ İNŞAATI 
+						</div>
+						<div class="tools">
+							<a href="javascript:;" class="collapse" data-original-title="" title=""></a>
+								
+						</div>
+						</div>
+						<div class="portlet-body">
+							<div class="table-responsive">
+								<div class="col-md-6">
+
+								<table id="example1" class="table table-striped table-bordered table-hover" >
+							        <thead>
+							            <tr>
+							                <th>Poz Adı</th>
+							                <th>Keşif Miktarı</th>
+							                <th>Birim Fiyatı</th>
+							                <th>Pursantaj</th>
+							                <th>İşlemler</th>
+							            </tr>
+							        </thead>         
+				    			</table>
+								</div>
+								<div class="col-md-6">
+									<table id="example2" class="table table-striped table-bordered table-hover" >
+										<thead>
+											<tr>
+												<th>Poz Adı</th>
+												<th>Keşif Miktarı</th>
+												<th>Birim Fiyatı</th>
+												<th>Pursantaj</th>
+												<th>İşlemler</th>
+											</tr>
+										</thead>
+									</table>								
+								</div>								
+							</div>
+						</div>
+					</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+<div class="page-footer">
+	<div class="page-footer-inner">
+		 adabusra 
+	</div>
+	<div class="scroll-to-top">
+		<i class="icon-arrow-up"></i>
+	</div>
+</div>
+<!-- END CORE PLUGINS -->
+<script src="../../assets/global/scripts/metronic.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout/scripts/layout.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout/scripts/quick-sidebar.js" type="text/javascript"></script>
+<script src="../../assets/admin/layout/scripts/demo.js" type="text/javascript"></script>
+
+
+<script src="http://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+<script src="http://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+<script src="http://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+<script src="http://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.2.4/js/dataTables.select.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+jQuery(document).ready(function() {       
+   // initiate layout and plugins
+	Layout.init(); // init current layout
+	QuickSidebar.init(); // init quick sidebar
+	Demo.init(); // init demo features
+});
+
+$(document).ready(function() {
+
+   $('#example2').DataTable({
+   	"aaData" : data,
+   	//"select" : true,
+   	"dom" : 'Bfrtip',
+    "buttons" : [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ],
+    "language": {
+        "sDecimal": ",",
+  		"sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+  		"sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+  		"sInfoEmpty": "Kayıt yok",
+  		"sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+		  "sInfoPostFix": "",
+		  "sInfoThousands": ".",
+		  "sLengthMenu": "_MENU_ kayıt göster",
+		  "sLoadingRecords": "Yükleniyor...",
+		  "sProcessing": "İşleniyor...",
+		  "sSearch": "Ara:",
+		  "sZeroRecords": "Eşleşen kayıt bulunamadı",
+		  "oPaginate": {
+		    "sFirst": "İlk",
+		    "sLast": "Son",
+		    "sNext": "Sonraki",
+		    "sPrevious": "Önceki"
+  			},
+		  "oAria": {
+		    "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+		    "sSortDescending": ": azalan sütun soralamasını aktifleştir"
+		  }
+    },
+   	"aoColumns" : [
+   		{ "mDataProp" : "pozadi" },
+   		{ "mDataProp" : "kesifmiktari" },
+   		{ "mDataProp" : "brimfiyati" },
+   		{ "mDataProp" : "pursantaj"},
+   		{ 
+   			"mDataProp": "tur", 
+            "render": function (mDataProp, type, row, meta) {
+                var result = '';
+                var id=row.id;
+                  //result = '<span class="center-block padding-5 label label-success">' + metin + '</span>';                  
+                  result='<button onclick="poz_Cikar('+ id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> </button>'
+                  //console.log(row.id)
+                 
+                  return result;
+              
+            }
+   		}
+   	]
+   });
+
+   $('#example1').DataTable( {
+    "aaData": testdata,
+    //"select": true,
+    "dom" : 'Bfrtip',
+    "buttons" : [
+        'copy', 'csv', 'excel', 'pdf', 'print'
+    ],
+   "language": {
+        "sDecimal": ",",
+  		"sEmptyTable": "Tabloda herhangi bir veri mevcut değil",
+  		"sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+  		"sInfoEmpty": "Kayıt yok",
+  		"sInfoFiltered": "(_MAX_ kayıt içerisinden bulunan)",
+		  "sInfoPostFix": "",
+		  "sInfoThousands": ".",
+		  "sLengthMenu": "_MENU_ kayıt göster",
+		  "sLoadingRecords": "Yükleniyor...",
+		  "sProcessing": "İşleniyor...",
+		  "sSearch": "Ara:",
+		  "sZeroRecords": "Eşleşen kayıt bulunamadı",
+		  "oPaginate": {
+		    "sFirst": "İlk",
+		    "sLast": "Son",
+		    "sNext": "Sonraki",
+		    "sPrevious": "Önceki"
+  			},
+		  "oAria": {
+		    "sSortAscending": ": artan sütun sıralamasını aktifleştir",
+		    "sSortDescending": ": azalan sütun soralamasını aktifleştir"
+		  }
+    },
+    "aoColumns": [
+        { "mDataProp": "pozadi" },
+        { "mDataProp": "kesifmiktari",
+          "render": function (mDataProp, type, row,meta){
+          	var giris = '';
+          	giris = '<input id="kesifmiktari" class="kesifmiktari_'+row.id+'" type="number" min="0" max="5000"></input>';
+          	return giris;
+          }
+         },
+        { "mDataProp": "brimfiyati",
+          "render" : function(mDataProp,type, row, meta ){
+          	var giris1= '<input id="birimfiyati" class="birimfiyati_'+row.id+'" type="number" min="0" max="5000"> </input>';
+          	return giris1;
+          }
+        },
+        { "mDataProp": "pursantaj",
+          "render" : function(mDataProp, type, row, meta){
+          	var giris2 = '<input id="pursantaj" class="pursantaj_'+row.id+'" type="number" min="0"; max="100";></input>';          	
+          	return giris2;
+          }
+        },
+        { 
+          "mDataProp": "tur", 
+          "render": function (mDataProp, type, row, meta) {
+                var result = '';
+                  //result = '<span class="center-block padding-5 label label-success">' + metin + '</span>';                  
+                  result='<button onclick="poz_Ekle('+ row.id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> </button>'
+                   //console.log(row.id)
+                  if(row.tur){ 
+                  	$('.pursantaj_'+ row.id).show();
+                  	$('.birimfiyati_'+ row.id).hide();
+                  	$('.kesifmiktari_'+ row.id).hide();                   	
+                    //console.log("true "+ row.id);
+                  } 
+                  else if(!row.tur){
+                    $('.birimfiyati_'+ row.id).show();
+                  	$('.kesifmiktari_'+ row.id).show();      
+                  	$('.pursantaj_'+ row.id).hide();     
+                  	//console.log("false " + row.id);  
+                  }
+                  return result;
+              
+            }
+        }
+    ]
+    } );
+} );
+
+function poz_Ekle(id,tur,pozAdi){
+	var table = $('#example1').DataTable();
+	var table2 = $('#example2').DataTable();
+	var birimFiyati = $('.birimfiyati_'+id).val();
+	var kesifMiktari = $('.kesifmiktari_'+id).val();
+	var pursantajMiktari= $('.pursantaj_'+id).val();	
+	if(tur){
+		if(pursantajMiktari === null || pursantajMiktari === ''){
+			//alert("Lütfen pursantaj yüzdesi giriniz!");	
+			//$('#myModal').modal('show');
+			$('#myModal').modal({ backdrop: 'static', keyboard: true }).find('.modal-body').html('Lütfen pursantaj yüzdesi giriniz!')
+            $('.modal-title').html('Uyarı');			
+		}
+		else{
+			
+			table2.row.add( {
+            "DT_RowId":"tr_"+id,
+		        "id":       id,
+		        "pozadi":   pozAdi,
+		        "kesifmiktari": "",
+		        "brimfiyati": "",
+		        "pursantaj": pursantajMiktari  ,
+		        "tur": tur
+		    } ).draw();
+			//$("#tr_"+id).remove();
+
+			table.row('#tr_'+id).remove().draw( false );
+		}		
+	}
+	if(!tur){		
+		if(kesifMiktari === null || kesifMiktari === '' || birimFiyati === null || birimFiyati === ''){
+		    //alert("Lütfen keşif miktarı / birim fiyatı giriniz!");
+		    $('#myModal').modal({ backdrop: 'static', keyboard: true }).find('.modal-body').html('Lütfen keşif miktarı / birim fiyatı giriniz!')
+            $('.modal-title').html('Uyarı');
+		}
+		else{
+			table.row('.selected').remove().draw( false );
+   
+			table2.row.add( {
+        "DT_RowId":"tr_"+id,
+		    "id": id,
+		    "pozadi": pozAdi,
+		    "kesifmiktari": kesifMiktari,
+		    "brimfiyati": birimFiyati,
+		    "pursantaj": "",
+		    "tur": tur
+		    } ).draw();
+
+			table.row('#tr_'+id).remove().draw( false );
+		}
+	}
+}
+
+function poz_Cikar(id,tur,pozAdi){
+	var table = $('#example1').DataTable();
+	var table2 = $('#example2').DataTable();
+
+	table.row.add( {
+    "DT_RowId":"tr_"+id,
+		"id": id,
+    "pozadi": pozAdi,
+		"kesifmiktari": "",
+		"brimfiyati": "",
+		"pursantaj": ""  ,
+		"tur": tur
+	} ).draw();
+
+	if(tur){ 
+        $('.pursantaj_'+ id).show();
+        $('.birimfiyati_'+ id).hide();
+        $('.kesifmiktari_'+ id).hide();         
+    } 
+    else if(!tur){
+        $('.birimfiyati_'+ id).show();
+        $('.kesifmiktari_'+ id).show();      
+        $('.pursantaj_'+ id).hide();  
+        
+    }
+
+	table2.row('#tr_'+ id).remove().draw( false );
+}
+
+function modalKapat(){
+	$('#myModal').modal('hide');
+}
+
+data =[{
+	"DT_RowId":"tr_6",
+	"id": "6",
+    "pozadi": "300 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1000,
+    "brimfiyati": 10,
+    "pursantaj": "",
+    "tur" : false
+},{
+	"DT_RowId":"tr_7",
+    "id": "7",
+    "pozadi": "400 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 5000,
+    "brimfiyati": 100,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_8",
+    "id": "8",
+    "pozadi": "500 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 100,
+    "brimfiyati": 10,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_9",
+    "id": "9",
+    "pozadi": "600 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1000,
+    "brimfiyati": 15,
+    "pursantaj": "",
+    "tur" : true
+  },  {
+  	"DT_RowId":"tr_10",
+    "id": "10",
+    "pozadi": "700 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1000,
+    "brimfiyati": 10,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_11",
+    "id": "11",
+    "pozadi": "800 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1,
+    "brimfiyati": 5,
+    "pursantaj": "",
+    "tur" : false
+  }, {
+  	"DT_RowId":"tr_12",
+    "id": "12",
+    "pozadi": "900 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 100,
+    "brimfiyati": 13,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_13",
+    "id": "13",
+    "pozadi": "1000 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1000,
+    "brimfiyati": 25,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_14",
+    "id": "14",
+    "pozadi": "1200 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 100,
+    "brimfiyati": 5,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_15",
+    "id": "15",
+    "pozadi": "1400 mm BAB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
+    "kesifmiktari": 1500,
+    "brimfiyati": 15,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_16",
+    "id": "16",
+    "pozadi": "HAFRİYAT İŞLERİ PURSANTAJ",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": 65,
+    "tur" : true
+  },  {
+  	"DT_RowId":"tr_17",
+    "id": "17",
+    "pozadi": "Metrekare Poz",
+    "kesifmiktari": 1000,
+    "brimfiyati": 10,
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_18",
+    "id": "18",
+    "pozadi": "Metreküp Poz",
+    "kesifmiktari": 1000,
+    "brimfiyati": 100,
+    "pursantaj": "",
+    "tur" : false
+  }
+]
+
+testdata = [ {
+	"DT_RowId":"tr_1",
+    "id": "1",
+    "pozadi": "Örnek Poz",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": "",
+    "tur" : true
+  },  {
+ 	"DT_RowId":"tr_2",
+    "id": "2",
+    "pozadi": "1600 mm BAB Döşemesi",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": "",
+    "tur" : true
+  },  {
+  	"DT_RowId":"tr_3",
+    "id": "3",
+    "pozadi": "1800 mm BAB Döşemesi",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_4",
+    "id": "4",
+    "pozadi": "2000 mm BAB Döşemesi",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": "",
+    "tur" : false
+  },  {
+  	"DT_RowId":"tr_5",
+    "id": "5",
+    "pozadi": "2200 mm BAB Döşemesi",
+    "kesifmiktari": "",
+    "brimfiyati": "",
+    "pursantaj": "",
+    "tur" : false
+
+  }];
+
+</script>
+</body>
+<!-- END BODY -->
+</html>
