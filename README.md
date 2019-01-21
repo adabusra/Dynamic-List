@@ -2,7 +2,9 @@
 Datatable.js, Javascript ..
 Demo Project
 1-) 2 tane tablo arasindaki data transferi-cach bellege ekleme ve silme
+
 2-) ..\templates\Index dizini altindaki home sayfasini chrome tarayicisinda çalistiriniz.
+
 3-) Projenini tarifi;
     * Soldaki tablo içindeki input degerleri dinamik olarak veri akisina göre otomatik gelmektedir. Ilgili alanin pursantaj
       bilgisi istiyorsa pursantaj alani, kesif miktari ve birim fiyati bilgisi istiyorsa kesif miktari ve birim fiyati alani
