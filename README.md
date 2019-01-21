@@ -24,5 +24,3 @@ Demo Project
     * Tablolar üzerindeki butonlarda pdf - excel - copy - csv - print islemleri yapilabilmektedir. Ara butonu ile de tabloda filtreleme
       islemi yapilmaktadir.
      
-
-4-) Proje ekran alintisi spexco klasörü içinde yer almaktadir.
