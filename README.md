@@ -1,6 +1,6 @@
 # Dynamic-List
 Datatable.js, Javascript ..
-Demo Project
+Demo Project 
 1-) 2 tane tablo arasindaki data transferi-cach bellege ekleme ve silme
 
 2-) ..\templates\Index dizini altindaki home sayfasini chrome tarayicisinda çalistiriniz.
