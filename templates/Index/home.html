@@ -74,7 +74,7 @@
 			         
 			        </div>
 			        <div class="modal-footer">
-			        	<button onclick="modalKapat()" type="button" class="btn red">Kapat</button>
+			        	<button onclick="modalClose()" type="button" class="btn red">Kapat</button>
 			        </div>
 			      </div>			      
 			    </div>
@@ -96,7 +96,7 @@
 							<div class="table-responsive">
 								<div class="col-md-6">
 
-								<table id="example1" class="table table-striped table-bordered table-hover" >
+								<table id="addToTable" class="table table-striped table-bordered table-hover" >
 							        <thead>
 							            <tr>
 							                <th>Poz Adı</th>
@@ -109,7 +109,7 @@
 				    			</table>
 								</div>
 								<div class="col-md-6">
-									<table id="example2" class="table table-striped table-bordered table-hover" >
+									<table id="removeToTable" class="table table-striped table-bordered table-hover" >
 										<thead>
 											<tr>
 												<th>Poz Adı</th>
@@ -132,7 +132,7 @@
 </div>
 <div class="page-footer">
 	<div class="page-footer-inner">
-		 adabusra 
+		 adabusra | 2018
 	</div>
 	<div class="scroll-to-top">
 		<i class="icon-arrow-up"></i>
@@ -169,8 +169,8 @@ jQuery(document).ready(function() {
 
 $(document).ready(function() {
 
-   $('#example2').DataTable({
-   	"aaData" : data,
+   $('#removeToTable').DataTable({
+   	"aaData" : removeDataList,
    	//"select" : true,
    	"dom" : 'Bfrtip',
     "buttons" : [
@@ -209,11 +209,8 @@ $(document).ready(function() {
    			"mDataProp": "tur", 
             "render": function (mDataProp, type, row, meta) {
                 var result = '';
-                var id=row.id;
-                  //result = '<span class="center-block padding-5 label label-success">' + metin + '</span>';                  
-                  result='<button onclick="poz_Cikar('+ id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> </button>'
-                  //console.log(row.id)
-                 
+                var id=row.id;            
+                  result='<button onclick="productRemove('+ id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> </button>'
                   return result;
               
             }
@@ -221,8 +218,8 @@ $(document).ready(function() {
    	]
    });
 
-   $('#example1').DataTable( {
-    "aaData": testdata,
+   $('#addToTable').DataTable( {
+    "aaData": addDataList,
     //"select": true,
     "dom" : 'Bfrtip',
     "buttons" : [
@@ -256,41 +253,38 @@ $(document).ready(function() {
         { "mDataProp": "pozadi" },
         { "mDataProp": "kesifmiktari",
           "render": function (mDataProp, type, row,meta){
-          	var giris = '';
-          	giris = '<input id="kesifmiktari" class="kesifmiktari_'+row.id+'" type="number" min="0" max="5000"></input>';
-          	return giris;
+          	var text = '';
+          	text = '<input id="kesifmiktari" class="kesifmiktari_'+row.id+'" type="number" min="0" max="5000"></input>';
+          	return text;
           }
          },
         { "mDataProp": "brimfiyati",
           "render" : function(mDataProp,type, row, meta ){
-          	var giris1= '<input id="birimfiyati" class="birimfiyati_'+row.id+'" type="number" min="0" max="5000"> </input>';
-          	return giris1;
+          	var text= '<input id="birimfiyati" class="birimfiyati_'+row.id+'" type="number" min="0" max="5000"> </input>';
+          	return text;
           }
         },
         { "mDataProp": "pursantaj",
           "render" : function(mDataProp, type, row, meta){
-          	var giris2 = '<input id="pursantaj" class="pursantaj_'+row.id+'" type="number" min="0"; max="100";></input>';          	
-          	return giris2;
+						var text = '';
+          	text = '<input id="pursantaj" class="pursantaj_'+row.id+'" type="number" min="0"; max="100";></input>';          	
+          	return text;
           }
         },
         { 
           "mDataProp": "tur", 
           "render": function (mDataProp, type, row, meta) {
-                var result = '';
-                  //result = '<span class="center-block padding-5 label label-success">' + metin + '</span>';                  
-                  result='<button onclick="poz_Ekle('+ row.id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> </button>'
-                   //console.log(row.id)
+                var result = '';                
+                  result='<button onclick="productAdd('+ row.id +','+ row.tur +',\'' + row.pozadi + '\')" type="button" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> </button>'
                   if(row.tur){ 
                   	$('.pursantaj_'+ row.id).show();
                   	$('.birimfiyati_'+ row.id).hide();
-                  	$('.kesifmiktari_'+ row.id).hide();                   	
-                    //console.log("true "+ row.id);
+                  	$('.kesifmiktari_'+ row.id).hide();
                   } 
                   else if(!row.tur){
                     $('.birimfiyati_'+ row.id).show();
                   	$('.kesifmiktari_'+ row.id).show();      
-                  	$('.pursantaj_'+ row.id).hide();     
-                  	//console.log("false " + row.id);  
+                  	$('.pursantaj_'+ row.id).hide();    
                   }
                   return result;
               
@@ -300,16 +294,14 @@ $(document).ready(function() {
     } );
 } );
 
-function poz_Ekle(id,tur,pozAdi){
-	var table = $('#example1').DataTable();
-	var table2 = $('#example2').DataTable();
+function productAdd(id,tur,pozAdi){
+	var table = $('#addToTable').DataTable();
+	var table2 = $('#removeToTable').DataTable();
 	var birimFiyati = $('.birimfiyati_'+id).val();
 	var kesifMiktari = $('.kesifmiktari_'+id).val();
 	var pursantajMiktari= $('.pursantaj_'+id).val();	
 	if(tur){
 		if(pursantajMiktari === null || pursantajMiktari === ''){
-			//alert("Lütfen pursantaj yüzdesi giriniz!");	
-			//$('#myModal').modal('show');
 			$('#myModal').modal({ backdrop: 'static', keyboard: true }).find('.modal-body').html('Lütfen pursantaj yüzdesi giriniz!')
             $('.modal-title').html('Uyarı');			
 		}
@@ -353,9 +345,9 @@ function poz_Ekle(id,tur,pozAdi){
 	}
 }
 
-function poz_Cikar(id,tur,pozAdi){
-	var table = $('#example1').DataTable();
-	var table2 = $('#example2').DataTable();
+function productRemove(id,tur,pozAdi){
+	var table = $('#addToTable').DataTable();
+	var table2 = $('#removeToTable').DataTable();
 
 	table.row.add( {
     "DT_RowId":"tr_"+id,
@@ -382,11 +374,11 @@ function poz_Cikar(id,tur,pozAdi){
 	table2.row('#tr_'+ id).remove().draw( false );
 }
 
-function modalKapat(){
+function modalClose(){
 	$('#myModal').modal('hide');
 }
 
-data =[{
+removeDataList =[{
 	"DT_RowId":"tr_6",
 	"id": "6",
     "pozadi": "300 mm MBB Döşemesi(Nakliye Bedeli Dahil, İdare Malı)",
@@ -493,7 +485,7 @@ data =[{
   }
 ]
 
-testdata = [ {
+addDataList = [ {
 	"DT_RowId":"tr_1",
     "id": "1",
     "pozadi": "Örnek Poz",
