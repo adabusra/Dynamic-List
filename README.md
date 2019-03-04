@@ -2,26 +2,22 @@
 Datatable.js, Javascript ..
 Demo Project 
 
-1-) 2 tane tablo arasindaki data transferi-cach bellege ekleme ve silme
+1-) Adding and deleting data transfer between 2 tables-cach memory.
 
-2-) ..\templates\Index dizini altindaki home sayfasini chrome tarayicisinda çalistiriniz.
+2-) Run the home page under the .. \templates\Index  directory in the chrome browser.
 
-3-) Projenini tarifi;
+3-) The description of the project;
 
-    * Soldaki tablo içindeki input degerleri dinamik olarak veri akisina göre otomatik gelmektedir. Ilgili alanin pursantaj
-      bilgisi istiyorsa pursantaj alani, kesif miktari ve birim fiyati bilgisi istiyorsa kesif miktari ve birim fiyati alani
-      görünür olacaktir.
+    * The input values in the table on the left are dynamically generated automatically according to the data flow. Pursantaj of the    related area ınformatıon, if the pursantaj field, the amount of concentrate the price information if the amount of valume and the unit price area will be visible.
       
-    * Ilgili alanlar bos geçilemez. Bos geçildigi takdirde uyari mesaji çikacaktir.
+    * Relevant fields cannot be passed. A warning message will be issued if the vacancy is reached.
     
-    * Bos geçilmeyen alanlari kayit etmek için; islemler kolununda yer alan ilgili satirin butonuna tiklayarak sagdaki tabloya 
-      eklenebilmektedir.
+    * In order to record the uninhabited areas; actions can be added to the table on the right by clicking on the corresponding line in the arm.
       
-    * Sagdaki tablodan data silmek yada güncellemek için; islemler kolonunda yer alan ilgili satirin butonuna tiklayarak tablodan
-      silinebilmektedir. 
+    * To delete or update data from the right table; can be deleted from the table by clicking the corresponding line button in the operations column.
       
-    * Silinen data soldaki tablo yer alir.
+    * Deleted data The table on the left is located.
     
-    * Tablolar üzerindeki butonlarda pdf - excel - copy - csv - print islemleri yapilabilmektedir. Ara butonu ile de tabloda filtreleme
-      islemi yapilmaktadir.
+    * Pdf - excel - copy - csv - print on the buttons on the tables can be done. Filter the table with Search button
+      is being processed.
      
